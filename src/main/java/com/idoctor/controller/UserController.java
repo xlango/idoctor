@@ -2,18 +2,19 @@ package com.idoctor.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.idoctor.pojo.JSONResult;
 import com.idoctor.pojo.User;
 import com.idoctor.service.impl.UserServiceImpl;
+import com.idoctor.utils.JsonUtils;
+import com.idoctor.utils.RedisTemplateUtil;
 
 
 @RestController   //@RestController =@Controller+@ResponseBody
@@ -23,6 +24,9 @@ public class UserController {
 	@Resource
 	private UserServiceImpl userService;
 	
+    @Resource
+    private RedisTemplateUtil redisTemplateUtil;
+
 	
 	String string = "2016-10-24 21:59:06";
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");	
@@ -95,6 +99,19 @@ public class UserController {
 		return JSONResult.ok();
 	}
 	
-	
+	@SuppressWarnings("unchecked")
+	@RequestMapping("/redis")
+	public JSONResult redis() {		 
+		List<User> userList = (List<User>) redisTemplateUtil.getList("userlist");
+		System.out.println(userList);
+        if(userList==null) {
+            System.out.println("还没有缓存，将从数据库中查询。。。");
+            userList = userService.findAll();
+            redisTemplateUtil.setList("userlist", userList);
+        }else {
+            System.out.println("已经有缓存了。。。");
+        }
+        return JSONResult.ok(userList);
+	}
 	
 }

@@ -1,13 +1,14 @@
 package com.idoctor.pojo;
 
-import java.util.Date;
+
+import java.io.Serializable;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-public class User {
+public class User implements Serializable {
 	
 	private int id;
 	private String name;
@@ -57,5 +58,11 @@ public class User {
 	public void setDescation(String descation) {
 		this.descation = descation;
 	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", password=" + password
+                + ", age=" + age  + ", birthday=" + birthday+ "]";
+	}
 
+	
 }
