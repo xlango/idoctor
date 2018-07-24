@@ -10,7 +10,7 @@ public interface IUserService {
 	
 	List<User> pageuser(Integer page,Integer pageSize);
 	
-    User findbyName(User user);
+	List<User> findByIf(User user);
 	
     void add(User user);
 	

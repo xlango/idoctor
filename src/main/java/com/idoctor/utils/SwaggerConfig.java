@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
@@ -15,7 +16,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration  
 @EnableWebMvc  
 @EnableSwagger2  
-@ComponentScan(basePackages="com.ia.controller")
+@ComponentScan(basePackages="com.idoctor.controller")
 public class SwaggerConfig {  
 	 @Bean
 	    public Docket createRestApi() {//api文档实例
@@ -30,8 +31,8 @@ public class SwaggerConfig {
 	    private ApiInfo apiInfo() {//接口的相关信息
 	        return new ApiInfoBuilder()
 	                .title("IA")
-	                .description("Base SSH")
-	                .termsOfServiceUrl("http://localhost:8080/iagriculture/")
+	                .description("Base SSM")
+	                .termsOfServiceUrl("http://localhost:8080/idoctor/")
 	                .contact("XYL")
 	                .version("1.0")
 	                .build();

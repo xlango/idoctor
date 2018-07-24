@@ -13,7 +13,7 @@ public interface UserMapper {
 
 	List<User> findAll();
 	
-	User findbyName(User user);
+	List<User> findByIf(User user);
 	
 	void add(User user);
 	

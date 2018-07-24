@@ -14,12 +14,12 @@
 
 	 <!-- 查询所有用户信息 -->
 	<select id="findAll" resultType="com.idoctor.pojo.User"
-		parameterType="java.util.List">
+		parameterType="com.idoctor.pojo.User">
 		select * from tb_user
 	</select>
 	
 		<!-- 根据条件查询用户信息 -->
-	<select id="findbyName" resultType="com.idoctor.pojo.User"
+	<select id="findByIf" resultType="com.idoctor.pojo.User"
 		parameterType="com.idoctor.pojo.User">
 		select * from tb_user
         <!--  (where标签自动去掉满足条件的第一个and) -->
@@ -36,7 +36,7 @@
          <if test="birthday != null">
             and birthday=#{birthday}
          </if>
-         <if test="name != null">
+         <if test="descation != null">
             and descation=#{descation}
          </if>
       </where>

@@ -21,8 +21,8 @@ public class UserServiceImpl implements IUserService {
 	private UserMapper userMapper;
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public User findbyName(User user) {
-		return userMapper.findbyName(user);
+	public List<User> findByIf(User user) {
+		return userMapper.findByIf(user);
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
