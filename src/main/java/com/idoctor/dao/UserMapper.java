@@ -20,4 +20,8 @@ public interface UserMapper {
 	void update(User user);
 	
 	void delete(User user);
+	
+	void addList(List<User> userList);
+	
+	void deleteList(int[] ids);
 }

@@ -17,4 +17,8 @@ public interface IUserService {
     void update(User user);
 	
     void delete(User user);
+    
+    void addList(List<User> userList);
+    
+    void deleteList(int[] uid);
 }

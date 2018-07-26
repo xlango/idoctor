@@ -22,6 +22,7 @@ public class UserServiceImpl implements IUserService {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public List<User> findByIf(User user) {
+		System.out.println(user.getName());
 		return userMapper.findByIf(user);
 	}
 
@@ -54,6 +55,16 @@ public class UserServiceImpl implements IUserService {
         
         System.out.println(pagelist.getList().toString());
 		return pagelist.getList();
+	}
+
+	@Override
+	public void addList(List<User> userList) {
+		userMapper.addList(userList);
+	}
+
+	@Override
+	public void deleteList(int[] uid) {
+		userMapper.deleteList(uid);
 	}
 
 

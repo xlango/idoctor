@@ -10,3 +10,6 @@
 <artifactId>springfox-swagger-ui</artifactId></br>
 <artifactId>springfox-swagger2</artifactId></br>
 自定义配置文件：/idoctor/src/main/java/com/idoctor/utils/SwaggerConfig.java</br>
+(4)使用MD5加密工具</br>
+(5)Mybatis批量操作</br>
+我的方法：前端想后端传递List<>参数时采用传Json String方式，使用JSONArray.fromObject(str)在后端转换为Json对象</br>
