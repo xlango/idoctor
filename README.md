@@ -14,6 +14,7 @@
 5.Mybatis批量操作</br>
   (1)我的方法：前端想后端传递List<>参数时采用传Json String方式，使用JSONArray.fromObject(str)在后端转换为Json对象</br>
   (2)映射文件操作sql使用<foreach>迭代数组或者List<>集合  </br>
+  (3)批量更新参考：https://www.cnblogs.com/Jason-Xiang/p/6558334.html  </br>
 6.国际化i18n
   (1)Spring核心配置文件配置bea:messageSource、CookieLocaleResolver  </br>
   (2)按照需求创建中文和英文两个资源文件，将它们放在新建文件夹messages下。 </br>
