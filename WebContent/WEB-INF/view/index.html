@@ -40,7 +40,7 @@ $(document).ready(function() {
 				var rdata = JSON.parse(d);
 				alert(d);
 				if (rdata.status == 200) {
-					alert('请求成功');							
+					swal("成功!", "上传成功:)", "success");					
 				} else {
 					alert('请求失败');
 				}

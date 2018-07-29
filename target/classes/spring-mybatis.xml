@@ -81,7 +81,7 @@
 			value="sqlSessionFactory"></property>
 	</bean>
 
-    <!--  Redis  jedis 相关配置-->
+	<!-- Redis jedis 相关配置 -->
 	<bean id="jedisPoolConfig"
 		class="redis.clients.jedis.JedisPoolConfig">
 		<!-- 控制一个pool最多有多少个状态为idle(空闲)的jedis实例 -->
@@ -132,6 +132,16 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-
+	<!-- 配置Spring国际化信息 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages/message"></property>
+	</bean>
+	<bean id="CookieLocaleResolver"
+		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="cookieMaxAge" value="604800"></property>
+		<property name="defaultLocale" value="zh_CN"></property>
+		<property name="cookieName" value="language"></property>
+	</bean>
 
 </beans>
