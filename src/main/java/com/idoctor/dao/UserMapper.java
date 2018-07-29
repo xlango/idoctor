@@ -24,4 +24,6 @@ public interface UserMapper {
 	void addList(List<User> userList);
 	
 	void deleteList(int[] ids);
+	
+	void updateList(List<User> userList);
 }

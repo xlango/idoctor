@@ -2,6 +2,7 @@ package com.idoctor.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -18,7 +19,6 @@ import com.idoctor.utils.RedisTemplateUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 
 @RestController   //@RestController =@Controller+@ResponseBody
@@ -171,10 +171,53 @@ public class UserController {
 	
 	@RequestMapping("/deleteList")
 	@ApiOperation(value = "批量删除用戶", httpMethod = "POST", notes = "批量删除用戶")
-	public JSONResult deleteList() {					
-		int id[]= {19,20,21};
-		//System.out.println(users.get(0).getName());
+	public JSONResult deleteList(int[] id) {					
 		userService.deleteList(id);
+		return JSONResult.ok();
+	}
+	
+	/**
+	 * 批量更新
+	 * @param userlist
+	 * @return
+	 */
+	@RequestMapping("/updatelist")
+	@ApiOperation(value = "批量更新用戶", httpMethod = "POST", notes = "批量更新用戶")
+	public JSONResult updateList() {
+		User user1=new User();
+		user1.setId(18);
+		user1.setName("1112099");
+		user1.setPassword("1112099");
+		user1.setAge(22);
+		user1.setBirthday("2018-02-02 00:00:00");
+		user1.setDescation("1112099");
+		
+		User user2=new User();
+		user2.setId(17);
+		user2.setName("1112199");
+		user2.setPassword("1112199");
+		user2.setAge(22);
+		user2.setBirthday("2018-02-02 00:00:00");
+		user2.setDescation("1112199");
+		
+		User user3=new User();
+		user3.setId(16);
+		user3.setName("1112299");
+		user3.setPassword("1112299");
+		user3.setAge(22);
+		user3.setBirthday("2018-02-02 00:00:00");
+		user3.setDescation("1112299");
+		
+		List<User> userList=new ArrayList<>();
+		userList.add(user1);
+		userList.add(user2);
+		userList.add(user3);
+		
+		
+		/*JSONArray jsonobject = JSONArray.fromObject(userlist);
+		List<User> users= (List<User>)JSONArray.toCollection(jsonobject, User.class);
+		System.out.println(users.get(0).getName());*/
+		userService.updateList(userList);
 		return JSONResult.ok();
 	}
 	

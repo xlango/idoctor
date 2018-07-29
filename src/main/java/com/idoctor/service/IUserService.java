@@ -21,4 +21,6 @@ public interface IUserService {
     void addList(List<User> userList);
     
     void deleteList(int[] uid);
+    
+    void updateList(List<User> userList);
 }

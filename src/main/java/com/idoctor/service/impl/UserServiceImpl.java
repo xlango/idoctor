@@ -63,8 +63,13 @@ public class UserServiceImpl implements IUserService {
 	}
 
 	@Override
-	public void deleteList(int[] uid) {
-		userMapper.deleteList(uid);
+	public void deleteList(int[] ids) {
+		userMapper.deleteList(ids);
+	}
+
+	@Override
+	public void updateList(List<User> userList) {
+		userMapper.updateList(userList);;
 	}
 
 

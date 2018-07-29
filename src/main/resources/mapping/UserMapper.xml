@@ -70,13 +70,52 @@
 		</foreach>
 	</insert>
 
-    <!-- 批量删除 -->
+	<!-- 批量删除 -->
+	<!-- 参数说明 -->
+	<!-- tb_user : 表名 id : 字段名 collection:表示类型,这里参数是数组,就写成array,如果是集合,就写成list 
+		item : 是一个变量名,自己随便起名 open表示左括号,separator是逗号,close是右括号 -->
 	<delete id="deleteList">
-		delete from tb_user where id in (
-		<foreach collection="ids" item="id" separator=",">
-			#{id}
+		delete from tb_user where
+		<foreach item="ids" collection="array" open="id in ("
+			separator="," close=")">
+			#{ids}
 		</foreach>
-		)
-
 	</delete>
+
+	<!-- 批量更新 -->
+	<update id="updateList">
+        update tb_user set
+        name =
+        <foreach collection="list" item="it" index="index"
+            separator=" " open="case id" close="end">
+            when #{it.id} then
+            #{it.name}
+        </foreach>
+        ,password =
+        <foreach collection="list" item="it" index="index"
+            separator=" " open="case id" close="end">
+            when #{it.id} then
+            #{it.password}
+        </foreach>        
+        ,age =
+        <foreach collection="list" item="it" index="index"
+            separator=" " open="case id" close="end">
+            when #{it.id} then #{it.age}
+        </foreach>
+        ,birthday =
+        <foreach collection="list" item="it" index="index"
+            separator=" " open="case id" close="end">
+            when #{it.id} then #{it.birthday}
+        </foreach>
+        ,descation =
+        <foreach collection="list" item="it" index="index"
+            separator=" " open="case id" close="end">
+            when #{it.id} then #{it.descation}
+        </foreach>
+        where id in
+        <foreach collection="list" item="it" index="index" 
+            separator="," open="(" close=")">
+            #{it.id}
+        </foreach>
+    </update>
 </mapper>
